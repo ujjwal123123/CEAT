@@ -1,6 +1,9 @@
+from __future__ import annotations
+
 import csv
 import sys
-from typing import List, Optional, Set, Tuple
+from collections import defaultdict
+from typing import DefaultDict, List, Optional, Set, Tuple
 
 TOTAL_TIME = 100000
 
