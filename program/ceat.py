@@ -23,13 +23,13 @@ class Core:
 
 class Task:
     def __init__(
-        self, id: int, execution_requirement: float, period: int, ratios: List[float]
+        self, id: int, execution_requirement: float, period: int, rates: List[float]
     ):
         self.id = id
         self.period: int = period
         self.exec: float = execution_requirement  # execution requirement
-        self.ratios: List[float] = ratios
-        self.core_count = len(ratios)
+        self.rates: List[float] = rates
+        self.core_count = len(rates)
         self.__utilizations: Optional[List[float]] = None
 
     def __repr__(self) -> str:
@@ -81,8 +81,8 @@ class FileReader:
         id: int = int(row[0])
         exec: float = float(row[1])
         period: int = int(row[2])
-        ratios: List[float] = list(map(float, row[3:]))
-        return Task(id, exec, period, ratios)
+        rates: List[float] = list(map(float, row[3:]))
+        return Task(id, exec, period, rates)
 
     def __read_tasks(self, file_name: str) -> List[Task]:
         with open(file_name, "r") as inp_file:
