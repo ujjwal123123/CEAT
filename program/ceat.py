@@ -192,6 +192,9 @@ class Scheduler:
         while time < TOTAL_TIME:
             print("running")
             frame_length: float = min([task.remaining_period for task in tasks])
+            for task in tasks:
+                if task.remaining_period == 0:
+                    task.remaining_period = task.period
             clusters: Set[Cluster] = self.construct_clusters(tasks, frame_length)
 
             for index, cluster in enumerate(clusters):
